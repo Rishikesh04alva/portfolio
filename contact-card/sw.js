@@ -1,6 +1,6 @@
 /* RISHIKESH CONTACT CARD - Service Worker (offline + PWA install) */
 
-const CACHE = "rishikesh-card-v1";
+const CACHE = "rishikesh-card-v2";
 const ASSETS = [
   "./",
   "./index.html",

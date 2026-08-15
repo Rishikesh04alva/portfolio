@@ -67,18 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ======================================================================
-     4. QR CODE (desktop only, encodes the live page URL)
+     4. QR CODE (encodes the live page URL, all devices)
      ====================================================================== */
   const qrBox = document.getElementById("qrcode");
-  const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
 
   function renderQR() {
     if (!qrBox || qrBox.innerHTML || typeof QRCode === "undefined") return;
     try {
       new QRCode(qrBox, {
         text: window.location.href,
-        width: 200,
-        height: 200,
+        width: 180,
+        height: 180,
         colorDark: "#0a0b0e",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.M,
@@ -88,13 +87,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  if (isDesktop()) renderQR();
-  window.addEventListener("resize", () => {
-    if (isDesktop()) renderQR();
-  });
+  renderQR();
 
   /* ======================================================================
-     5. SERVICE WORKER (offline + installable PWA)
+     5. SHARE - native share sheet, clipboard fallback
+     ====================================================================== */
+  const shareBtn = document.getElementById("quick-share");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async () => {
+      const url = window.location.href;
+      const shareData = {
+        title: "Rishikesh - AI Engineering Student",
+        text: "Connect with Rishikesh - AI & ML Engineering Student",
+        url,
+      };
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (e) {
+          /* user cancelled - fall through to clipboard */
+        }
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => toast("Link copied!")).catch(() => {});
+      } else {
+        toast("Link copied!");
+      }
+    });
+  }
+
+  /* ======================================================================
+     6. SERVICE WORKER (offline + installable PWA)
      ====================================================================== */
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {

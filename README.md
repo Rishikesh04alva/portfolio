@@ -35,9 +35,9 @@ git push -u origin main
 
 3. In the repo on GitHub: **Settings → Pages → Source: "GitHub Actions"**.
 4. The workflow runs on push and the card goes live at:
-   `https://<USERNAME>.github.io/<REPO>/contact-card/`
+   `https://<USERNAME>.github.io/<REPO>/`
 
-> Once deployed, the QR code on desktop automatically points to the live URL.
+> Once deployed, the QR code automatically points to the live URL on every device.
 
 ### Update & version the cache
 
