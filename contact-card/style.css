@@ -1,0 +1,353 @@
+/* ==========================================================================
+   RISHIKESH DIGITAL BUSINESS CARD - MOBILE FIRST
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #0a0b0e;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f5f6f9;
+  --text-2: #9da4b3;
+  --text-3: #606877;
+  --accent: #00f0ff;
+  --accent-2: #ff5e1a;
+  --ok: #10b981;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 500px at 50% -10%, rgba(0, 240, 255, 0.09), transparent 60%),
+    radial-gradient(700px 400px at 90% 110%, rgba(255, 94, 26, 0.06), transparent 60%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 22px 120px; /* bottom space for the fixed quick bar */
+}
+
+/* ---- HERO ---- */
+.hero { text-align: center; }
+
+.avatar-wrap {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 18px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 240, 255, 0.45);
+  box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.05), 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.online-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ok);
+  border: 3px solid var(--bg);
+}
+
+.name {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  margin: 8px 0 14px;
+}
+
+.status {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.status b { color: var(--text); font-weight: 600; }
+
+.badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+}
+
+/* ---- SECTION LABELS ---- */
+.connect-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--accent-2);
+  margin: 32px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.connect-title::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--accent-2);
+}
+
+/* ---- CONNECT BUTTONS ---- */
+.connect-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.connect-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  min-height: 86px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.connect-btn svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+
+.connect-btn:active {
+  transform: scale(0.97);
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.35);
+}
+
+.btn-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.btn-value {
+  font-size: 0.94rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* ---- SOCIAL PILLS ---- */
+.social-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.social-pill svg { width: 18px; height: 18px; }
+
+.social-pill:active {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(0.96);
+}
+
+/* ---- QR (desktop only) ---- */
+.qr-section { display: none; }
+
+.qr-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px;
+  text-align: center;
+}
+
+#qrcode {
+  display: inline-block;
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.qr-card p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-2);
+  margin: 14px 0 0;
+}
+
+/* ---- FOOTER ---- */
+.foot {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  margin-top: 44px;
+}
+
+/* ---- QUICK ACTION BAR (mobile) ---- */
+.quick-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: rgba(10, 11, 14, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 0 10px;
+  color: var(--text-2);
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.quick-item svg { width: 22px; height: 22px; }
+
+.quick-item:active { color: var(--accent); }
+
+/* ---- TOAST ---- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(100px + env(safe-area-inset-bottom));
+  transform: translateX(-50%) translateY(12px);
+  background: var(--text);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 10px 18px;
+  border-radius: 999px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   LAPTOP / DESKTOP (secondary)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .card {
+    padding: 48px 24px 64px;
+  }
+
+  .name { font-size: 2.8rem; }
+
+  /* Quick bar becomes an inline card */
+  .quick-bar {
+    position: static;
+    max-width: 600px;
+    margin: 36px auto 0;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+
+  .quick-item { padding: 16px 0 14px; }
+
+  /* Show the QR card */
+  .qr-section { display: block; }
+
+  .toast { bottom: 32px; }
+
+  .connect-btn:hover {
+    background: rgba(0, 240, 255, 0.07);
+    border-color: rgba(0, 240, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .social-pill:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+  }
+}
